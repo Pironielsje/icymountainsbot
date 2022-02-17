@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 module.exports.run = async(client, msg, args) => {
 
-    if(msg.member.permissions.has("KICK_MEMBERS")) return msg.reply("You have to have the **KICK_MEMBERS** permission to do this!")
+    if(!msg.member.permissions.has("KICK_MEMBERS")) return msg.reply("You have to have the **KICK_MEMBERS** permission to do this!")
 
     const target = msg.mentions.members.first()
 
@@ -30,7 +30,7 @@ module.exports.run = async(client, msg, args) => {
     } else if(!data) {
         let newData = new warnSchema({
             _id: targetId,
-            warms: 1
+            warns: 1
         })
 
         newData.save()
