@@ -11,7 +11,7 @@ module.exports.run = async(client, msg, args) => {
 
     if(!parseInt(args[0])) msg.reply(`Please give me an id! Not some letters`)
 
-    if(target.permissions.has("MANAGE_MESSAGES")) return msg.reply("You can't warn that user!")
+    if(!target.kickable) return msg.reply("You can't warn that user!")
 
     const targetId = target.user.id || args[0]
 
