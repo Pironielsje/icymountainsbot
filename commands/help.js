@@ -10,7 +10,7 @@ module.exports.run = async (client, msg, args) => {
     )
     .setFooter(
       `Requested by: ${msg.author.username}`,
-      msg.author.displayAvatarUrl()
+      msg.author.displayAvatarURL()
     )
     .setTimestamp();
 
