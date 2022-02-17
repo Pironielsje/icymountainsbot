@@ -6,7 +6,7 @@ module.exports.run = async (client, msg, args) => {
     .setColor("BLURPLE")
     .setFields(
       { name: "Information commands", value: "All the information commands" },
-      { name: "`;help`", value: "`Returns this embed`" }
+      { name: "**;help**", value: "`Returns this embed`" }
     )
     .setFooter(
       `Requested by: ${msg.author.username}`,
