@@ -1,0 +1,28 @@
+{
+  "name": "icymountainsbot",
+  "version": "1.0.0",
+  "description": "Icy Mountains?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pironielsje/icymountainsbot.git"
+  },
+  "keywords": [
+    "Bot",
+    "IcyMountains",
+    "Official"
+  ],
+  "author": "Niels",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pironielsje/icymountainsbot/issues"
+  },
+  "homepage": "https://github.com/Pironielsje/icymountainsbot#readme",
+  "dependencies": {
+    "discord.js": "^13.6.0",
+    "mongoose": "^6.2.2"
+  }
+}
