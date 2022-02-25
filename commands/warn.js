@@ -13,7 +13,7 @@ module.exports.run = async(client, msg, args) => {
 
     const targetId = target.user.id || args[0]
 
-    let reason = args[1].join(" ")
+    let reason = args.slice(1).join(" ")
 
     if(!reason) reason = "No reason specified" 
 
