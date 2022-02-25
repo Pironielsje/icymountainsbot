@@ -22,7 +22,7 @@ module.exports.run = async(client, msg, args) => {
 
     if(data) {
         data.update(
-            { $inc: { warns: 1 }}
+            { $add: { warns: 1 }}
         )
 
         msg.reply(`Warned <@${targetId}> for ${reason}`)
