@@ -1,5 +1,6 @@
 const warnSchema = require('../schemas/warnmodel')
 const mongoose = require('mongoose')
+const { MessageActionRow } = require('discord.js')
 
 module.exports.run = async(client, msg, args) => {
 
@@ -21,10 +22,10 @@ module.exports.run = async(client, msg, args) => {
 
     if(data) {
         data.update(
-            { warns: { $add: 1 }}
+            { warns: { $inc: 1 }}
         )
 
-        console.log(warnSchema.findOne({_id: targetId}, {warns: targetId}))
+        msg.reply(`Warned <@${targetId}> for ${reason}`)
     } else if(!data) {
         let newData = new warnSchema({
             _id: targetId,
