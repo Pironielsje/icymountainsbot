@@ -23,6 +23,8 @@ module.exports.run = async(client, msg, args) => {
         data.update(
             { warns: { $add: 1 }}
         )
+
+        console.log(warnSchema.findOne({_id: targetId}))
     } else if(!data) {
         let newData = new warnSchema({
             _id: targetId,
