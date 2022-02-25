@@ -5,13 +5,13 @@ module.exports.run = async(client, msg, args) => {
 
     if(!msg.member.permissions.has("KICK_MEMBERS")) return msg.reply("You have to have the **KICK_MEMBERS** permission to do this!")
 
-    const target = msg.mentions.users.first()
+    const target = msg.mentions.members.first()
 
     if(!target || !args[0]) msg.reply(`Who do you want to warn? Please tag someone while running the command!`)
 
     if(!parseInt(args[0])) msg.reply(`Please give me an id! Not some letters`)
 
-    const targetId = target.id || args[0]
+    const targetId = target.user.id || msg.guild.members.cache.get(args[0]).user.id
 
     let reason = args[1].join(" ")
 
