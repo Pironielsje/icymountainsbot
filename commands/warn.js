@@ -9,8 +9,6 @@ module.exports.run = async(client, msg, args) => {
 
     if(!target || !args[0]) msg.reply(`Who do you want to warn? Please tag someone while running the command!`)
 
-    if(!parseInt(args[0])) msg.reply(`Please give me an id! Not some letters`)
-
     const targetId = target.user.id || args[0]
 
     let reason = args.slice(1).join(" ")
