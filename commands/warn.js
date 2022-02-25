@@ -1,4 +1,4 @@
-const warnSchema = require('../models/warnmodel')
+const warnSchema = require('../schemas/warnmodel')
 const mongoose = require('mongoose')
 
 module.exports.run = async(client, msg, args) => {
@@ -11,7 +11,7 @@ module.exports.run = async(client, msg, args) => {
 
     if(!parseInt(args[0])) msg.reply(`Please give me an id! Not some letters`)
 
-    const targetId = target.user.id || msg.guild.members.cache.get(args[0]).user.id
+    const targetId = target.user.id
 
     let reason = args[1].join(" ")
 
