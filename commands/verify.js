@@ -10,7 +10,12 @@ module.exports.run = async(client, msg, args) => {
     }
     else {
         msg.member.roles.add("942069272816017458")
-        msg.reply(`You're verified!`)
+        msg.reply(`You're verified!`).then(mes => {
+            setTimeout(() => {
+                mes.delete()
+                msg.delete()
+            }, 4000);
+        })
     }    
 }
 
