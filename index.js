@@ -53,7 +53,7 @@ client.on("messageCreate", async (msg) => {
   const args = msgArray.slice(1);
 
   if (!msg.content.startsWith(config.prefix)) return;
-
+  
   const cmdData =
     client.commands.get(command.slice(config.prefix.length)) ||
     client.aliases.get(command.slice(config.prefix.length));
