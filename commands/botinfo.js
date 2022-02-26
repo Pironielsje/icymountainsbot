@@ -6,7 +6,7 @@ module.exports.run = async(client, msg, args) => {
         .setTitle(`Botinfo`)
         .setColor(`AQUA`)
         .setFields(
-            {name: 'Users', value: client.users.cache.size},
+            {name: 'Users', value: `Total users: ${client.users.cache.size}`},
             {name: 'Uptime', value: client.uptime}
         )
         .setFooter(`Requested by: ${msg.author.username}`, msg.author.displayAvatarURL())
