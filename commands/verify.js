@@ -1,7 +1,7 @@
 module.exports.run = async(client, msg, args) => {
-    const role = 942069272816017458
+    const role = msg.guild.roles.cache.find(r => r.name === "Verified")
 
-    if(msg.member.roles.find(role)) return msg.reply("You already have the role!")
+    if(msg.member.roles.cache.get(role)) return msg.reply("You already have the role!")
 
     else {
         msg.member.roles.add(role)
