@@ -5,7 +5,9 @@ module.exports.run = async(client, msg, args) => {
     if(!args[0]) return msg.reply("Please mention at least one person or give atleast one id to ban!")
     if(!args[1]) return msg.reply("Please give me a reason to ban this person!")
  
-    const user = msg.guild.members.cache.get(msg.mentions.users.first().id || msg.guild.members.get(args[0])).id
+    const target = msg.mentions.members.first()
+
+    const user = msg.guild.members.cache.get(target.user.id || msg.guild.members.get(args[0])).id
  
     if(!user) return msg.reply("I can't seem to find this user. Is the id or mention correct?")
  
