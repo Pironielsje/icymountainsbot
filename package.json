@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Pironielsje/icymountainsbot#readme",
   "dependencies": {
     "discord.js": "^13.6.0",
-    "mongoose": "^6.2.2"
+    "mongoose": "^6.2.2",
+    "ms": "^2.1.3"
   }
 }
