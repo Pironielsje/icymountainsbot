@@ -1,7 +1,6 @@
 module.exports.run = async(client, msg, args) => {
-    const role = msg.guild.roles.cache.find(r => r.name === "Verified")
 
-    if(msg.member.roles.cache.find(role)){
+    if(msg.member.roles.cache.some(role => role.name === "Verified")){
         return msg.reply("You already have the role!")
     }
     else {
