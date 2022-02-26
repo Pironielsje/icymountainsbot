@@ -5,8 +5,10 @@ module.exports.run = async (client, msg, args) => {
     .setTitle(`Commands for ${client.user.username}`)
     .setColor("BLURPLE")
     .setFields(
-      { name: "Information commands", value: "All the information commands" },
-      { name: "**;help**", value: "`Returns this embed`" }
+      { name: "Information commands", value: "All the information commands\n\n**;help** - `Returns this embed` - usage: ;help" },
+      {name: "Fun Commands", value: `All the fun commands\n\n**;8ball** - \`Gives you a random answer\` - usage: ;8ball <question>`},
+      {name: "Moderation Commands", value: `All the moderation commands\n\n**;warn** - \`warns the targeted user / id\` - usage: ;warn <target> [reason]`},
+      {name: "Role Commands", value: `All the Role commands\n\n**;verify** - \`Verifies you\` - usage: ;verify`}
     )
     .setFooter(
       `Requested by: ${msg.author.username}`,
