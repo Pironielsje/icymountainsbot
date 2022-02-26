@@ -27,6 +27,8 @@ module.exports.run = async(client, msg, args) => {
         )
 
         msg.reply(`Warned <@${targetId}> for ${reason}`)
+
+        target.send(`You have been warned in ${msg.guild.name} for ${reason}`)
     } else if(!data) {
         let newData = new warnSchema({
             _id: targetId,
