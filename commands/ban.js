@@ -12,7 +12,7 @@ module.exports.run = async(client, msg, args) => {
  
     if(user.permissions.has("MANAGE_MESSAGES")) return msg.reply("Couldn't ban a moderator.")
  
-    var reason = args[1].slice(1).join(" ")
+    var reason = args.slice(1).join(" ")
 
     if(!reason) reason = "No reason specified!"
  
