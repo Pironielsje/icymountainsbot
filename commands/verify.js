@@ -4,7 +4,7 @@ module.exports.run = async(client, msg, args) => {
         return msg.reply("You already have the role!")
     }
     else {
-        msg.member.roles.add(role)
+        msg.member.roles.add("942069272816017458")
         msg.reply(`You're verified!`)
     }    
 }
