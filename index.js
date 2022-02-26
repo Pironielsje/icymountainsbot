@@ -57,7 +57,7 @@ client.on("messageCreate", async (msg) => {
   const cmdData =
     client.commands.get(command.slice(config.prefix.length)) ||
     client.aliases.get(command.slice(config.prefix.length));
-
+  
   if (!cmdData) return;
 
   try {
