@@ -3,7 +3,6 @@ module.exports.run = async(client, msg, args) => {
     if(!msg.guild.me.permissions.has("BAN_MEMBERS")) return msg.reply("Sorry! I don't have the permission to ban someone!")
  
     if(!args[0]) return msg.reply("Please mention at least one person or give atleast one id to ban!")
-    if(!args[1]) return msg.reply("Please give me a reason to ban this person!")
  
     const target = msg.mentions.members.first()
 
@@ -14,6 +13,8 @@ module.exports.run = async(client, msg, args) => {
     if(user.permissions.has("MANAGE_msgS")) return msg.reply("Couldn't ban a moderator.")
  
     var reason = args[1].slice(1).join(" ")
+
+    if(!reason) reason = "No reason specified!"
  
     const banned = new msgEmbed()
         .setColor("RED")
