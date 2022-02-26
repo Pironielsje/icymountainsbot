@@ -8,7 +8,7 @@ module.exports.run = async(client, msg, args) => {
         .setColor(`AQUA`)
         .setFields(
             {name: 'Users', value: `Total users: ${client.users.cache.size}`},
-            {name: 'Uptime', value: `Uptime: ${ms(client.uptime)}`}
+            {name: 'Uptime', value: `Uptime: ${ms(client.uptime, {long: true})}`}
         )
         .setFooter(`Requested by: ${msg.author.username}`, msg.author.displayAvatarURL())
         .setTimestamp()
