@@ -1,3 +1,5 @@
+const { MessageEmbed } = require("discord.js")
+
 module.exports.run = async(client, msg, args) => {
     if(!msg.member.permissions.has("BAN_MEMBERS")) return msg.reply("Sorry! You have to have the: **BAN_MEMBERS** permission to use this")
     if(!msg.guild.me.permissions.has("BAN_MEMBERS")) return msg.reply("Sorry! I don't have the permission to ban someone!")
@@ -16,7 +18,7 @@ module.exports.run = async(client, msg, args) => {
 
     if(!reason) reason = "No reason specified!"
  
-    const banned = new msgEmbed()
+    const banned = new MessageEmbed()
         .setColor("RED")
         .setDescription(`Banned **${user} (${user.id})** For **${reason}** by **${msg.author.username}**`)
         .setFooter(`Requested by: ${msg.author.username}`, msg.author.displayAvatarURL())
