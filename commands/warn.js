@@ -22,7 +22,7 @@ module.exports.run = async(client, msg, args) => {
 
     if(data) {
         data.update(
-            { $add: { warns: 1 }},
+            { "$inc": { warns: 1 }},
             {upsert: true}
         )
 
