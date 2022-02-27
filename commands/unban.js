@@ -4,8 +4,6 @@ module.exports.run = async(client, msg, args) => {
  
     if(!args[0]) return msg.reply("Please mention at least one person or give atleast one id to ban!")
  
-    if(user.permissions.has("MANAGE_MSG")) return msg.reply("Couldn't kick a moderator.")
- 
     var reason = args[1].slice(1).join(" ")
  
     if(!reason) reason = "No reason specified"
