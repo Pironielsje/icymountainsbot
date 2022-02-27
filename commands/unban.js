@@ -12,7 +12,7 @@ module.exports.run = async(client, msg, args) => {
 
     const unbanned = new MessageEmbed()
         .setColor("RED")
-        .setDescription(`Unbanned **${args[0]} (${user.id})** For **${reason}**`)
+        .setDescription(`Unbanned **${args[0]}** For **${reason}**`)
         .setFooter(`Requested by: ${msg.author.username}`, msg.author.displayAvatarURL())
         .setTimestamp()
  
