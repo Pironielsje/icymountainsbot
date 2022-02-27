@@ -8,7 +8,7 @@ module.exports.run = async(client, msg, args) => {
  
     if(!reason) reason = "No reason specified"
 
-    const unbanned = new msgEmbed()
+    const unbanned = new MessageEmbed()
         .setColor("RED")
         .setDescription(`Unbanned **${user} (${user.id})** For **${reason}**`)
         .setFooter(`Requested by: ${msg.author.username}`, msg.author.displayAvatarURL())
