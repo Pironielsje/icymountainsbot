@@ -1,3 +1,5 @@
+const {MessageEmbed} = require('discord.js')
+
 module.exports.run = async(client, msg, args) => {
     if(!msg.member.permissions.has("BAN_MEMBERS")) return msg.reply("Sorry! You have to have the: **BAN_MEMBERS** permission to use this")
     if(!msg.guild.me.permissions.has("BAN_MEMBERS")) return msg.reply("Sorry! I don't have the permission to ban someone!")
