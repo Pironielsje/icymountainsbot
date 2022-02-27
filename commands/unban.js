@@ -4,7 +4,7 @@ module.exports.run = async(client, msg, args) => {
  
     if(!args[0]) return msg.reply("Please mention at least one person or give atleast one id to ban!")
  
-    var reason = args[1].slice(1).join(" ")
+    var reason = args.slice(1).join(" ")
  
     if(!reason) reason = "No reason specified"
 
