@@ -12,11 +12,11 @@ module.exports.run = async(client, msg, args) => {
 
     const unbanned = new MessageEmbed()
         .setColor("RED")
-        .setDescription(`Unbanned **${user} (${user.id})** For **${reason}**`)
+        .setDescription(`Unbanned **${args[0]} (${user.id})** For **${reason}**`)
         .setFooter(`Requested by: ${msg.author.username}`, msg.author.displayAvatarURL())
         .setTimestamp()
  
-    user.unban().catch(err => {
+    msg.guild.unban(args[0]).catch(err => {
         if(err) {
             msg.reply('Something went wrong')
             console.log(err)
