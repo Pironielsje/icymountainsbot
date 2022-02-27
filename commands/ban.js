@@ -8,7 +8,7 @@ module.exports.run = async(client, msg, args) => {
  
     const target = msg.mentions.members.first()
 
-    const user = msg.guild.members.cache.get(target.user.id)
+    const user = msg.guild.members.cache.get(target.user.id || args[0])
  
     if(!user) return msg.reply("I can't seem to find this user. Is the id or mention correct?")
  
