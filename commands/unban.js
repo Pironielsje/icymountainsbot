@@ -16,7 +16,7 @@ module.exports.run = async(client, msg, args) => {
         .setFooter(`Requested by: ${msg.author.username}`, msg.author.displayAvatarURL())
         .setTimestamp()
  
-    msg.guild.unban(args[0]).catch(err => {
+    msg.guild.bans.remove(args[0]).catch(err => {
         if(err) {
             msg.reply('Something went wrong')
             console.log(err)

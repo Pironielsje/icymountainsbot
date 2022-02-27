@@ -51,7 +51,7 @@ client.on("messageCreate", async (msg) => {
   const command = msgArray[0];
 
   const args = msgArray.slice(1);
-
+  
   if (!msg.content.startsWith(config.prefix)) return;
   
   const cmdData =
