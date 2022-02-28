@@ -1,5 +1,9 @@
 module.exports.run = async(client, msg, args) => {
-    msg.reply("Test")
+    if(msg.guild.channels.get(channel => channel.name === `${msg.author.username}-ticket`)) {
+        return msg.reply(`You already have a ticket smh!`)
+    } else {
+        msg.guild.channels.create(`${msg.author.username}-ticket`)
+    }
 }
 
 module.exports.help = {
