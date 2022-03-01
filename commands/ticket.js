@@ -1,71 +1,56 @@
-const { MessageEmbed } = require("discord.js")
+const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js")
 
 module.exports.run = async(client, msg, args) => {
-    const categoryId = "947895136812158956";
+    let author = msg.author.toLowerCase()
+    let discriminator = msg.author.discriminator
 
-    // Get username
-    var userName = msg.author.username;
-    // Verkrijg discriminator
-    var userDiscriminator = msg.author.discriminator;
+    if (msg.guild.channels.cache.find(c => c.name == `${author}${discriminator}-ticket`)) {
+        msg.reply("You already have a ticket open!")
+    } else if (!msg.guild.channels.cache.find(c => c.name == `${author}${discriminator}-ticket`)) {
+        msg.guild.channels.create(`${author}${discriminator}-ticket`, {
+            parent: '947895136812158986',
+            topic: `${author}'s topic!`,
+            permissionOverwrites: [{
+                    id: msg.author.id,
+                    allow: ['SEND_MESSAGES', 'VIEW_CHANNEL']
+                },
+                {
+                    id: client.user.id,
+                    allow: ['SEND_MESSAGES', 'VIEW_CHANNEL']
+                }, {
+                    id: '942822344928415745',
+                    allow: ['SEND_MESSAGES', 'VIEW_CHANNEL']
+                }, {
+                    id: '942069272816017458',
+                    deny: ['VIEW_CHANNEL', 'SEND_MESSAGES']
+                },
+            ],
+            type: 'GUILD_TEXT'
+        }).then(async c => {
+            msg.reply(`Ticket created in <#${c.id}>`)
 
-    // If ticket has been made
-    var bool = false;
+            const newtic = new MessageEmbed()
+                .setColor(`NAVY`)
+                .setDescription(`Please wait untill the staff replies! Don't ping them please!`)
 
-    // Checking if ticket has been made.
-    msg.guild.channels.forEach((channel) => {
+            const row = new MessageActionRow()
+                .addComponents(
+                    new MessageButton()
+                    .setCustomId('close')
+                    .setLabel('Close')
+                    .setEmoji("🔐")
+                    .setStyle("DANGER")
+                )
 
-        // If ticket has been made sent:
-        if (channel.name == userName.toLowerCase() + "-" + userDiscriminator) {
-
-            msg.channel.send("You already made a ticket");
-
-            bool = true;
-
-        }
-
-    });
-
-    // Ticket return code
-    if (bool == true) return;
-
-    var embedCreateTicket = new discord.RichEmbed()
-        .setTitle("Hey, " + msg.author.username)
-        .setFooter("Support channel will be made");
-
-    msg.channel.send(embedCreateTicket);
-
-    // Create channel and put it in the right catogary
-    msg.guild.createChannel(userName + "-" + userDiscriminator, "text").then((createdChan) => { // Maak kanaal
-
-        createdChan.setParent(categoryId).then((settedParent) => { // Zet kanaal in category.
-
-            // Put permissions for everyone
-            settedParent.overwritePermissions(msg.guild.roles.find('name', "@everyone"), { "READ_MESSAGES": false });
-            settedParent.overwritePermissions(msg.guild.roles.find('name', "@staff"), { "VIEW_CHANNEL": true });
-            // Put permission by the user that created the ticket
-            settedParent.overwritePermissions(msg.author, {
-
-                "READ_MESSAGES": true,
-                "SEND_MESSAGES": true,
-                "ATTACH_FILES": true,
-                "CONNECT": true,
-                "CREATE_INSTANT_INVITE": false,
-                "ADD_REACTIONS": true
-
-            });
-
-            var embedParent = new discord.RichEmbed()
-                .setTitle("Hey, " + msg.author.username.toString())
-                .setDescription("Ask your questions to the staff team here!");
-
-            settedParent.send(embedParent);
-        }).catch(err => {
-            msg.channel.send("Something went wrong.");
-        });
-
-    }).catch(err => {
-        msg.channel.send("Something went wrong.");
-    });
+            c.send({
+                content: `<@${msg.author.id}> <@942822344928415745>`,
+                embeds: [newtic],
+                components: [row]
+            }).then(m => {
+                m.pin()
+            })
+        })
+    }
 }
 
 module.exports.help = {
