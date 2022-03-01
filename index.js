@@ -1,5 +1,4 @@
 const { Client, Intents, Collection, MessageEmbed } = require("discord.js");
-const config = require("./config.json");
 const mongoose = require("mongoose");
 const fs = require("fs");
 
@@ -52,11 +51,13 @@ client.on("messageCreate", async(msg) => {
 
     const args = msgArray.slice(1);
 
-    if (!msg.content.startsWith(config.prefix)) return;
+    const prefix = ";"
+
+    if (!msg.content.startsWith(prefix)) return;
 
     const cmdData =
-        client.commands.get(command.slice(config.prefix.length)) ||
-        client.aliases.get(command.slice(config.prefix.length));
+        client.commands.get(command.slice(prefix.length)) ||
+        client.aliases.get(command.slice(prefix.length));
 
     if (!cmdData) return;
 
