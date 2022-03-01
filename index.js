@@ -75,6 +75,17 @@ client.on('interaction', (interaction) => {
             .setTitle("Closed")
             .setColor("RED")
             .setDescription(`Deleting the ticket in 5 seconds...\nClosed by ${interaction.user.username}`)
+
+        const deletedEmbed = new MessageEmbed()
+            .setTitle("Channel deleted")
+            .setColor("RED")
+            .setDescription(`${interaction.channel.name} has been deleted.`)
+        interaction.channel.send({ embeds: [reply] }).then(m => {
+            setTimeout(() => {
+                interaction.channel.delete()
+                interaction.guild.channels.cache.find(c => c.name === "🌲-logs").send({ embeds: [deletedEmbed] })
+            }, 5000);
+        })
     }
 })
 
