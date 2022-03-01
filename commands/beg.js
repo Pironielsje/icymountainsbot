@@ -14,15 +14,15 @@ module.exports.run = async(client, msg, args) => {
 
     if (schema.findOne({ _id: msg.author.id })) {
         schema.updateOne({ $inc: { money: givenMoney } })
-        msg.reply(`${giver} gave you $${money}`)
+        msg.reply(`${giver} gave you $${givenMoney}`)
     } else {
         let newData = new schema({
             _id: msg.author.id,
-            money: money
+            money: givenMoney
         })
 
         newData.save()
-        msg.reply(`${giver} gave you your first $${money}`)
+        msg.reply(`${giver} gave you your first $${givenMoney}`)
     }
 
 }
