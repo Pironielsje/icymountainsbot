@@ -16,16 +16,16 @@ module.exports.run = async(client, msg, args) => {
 
     if (!time) msg.reply(`You didnt specify a time!`)
 
-    target.roles.remove(mainRole.id)
-    target.roles.add(role.id)
+    target.roles.remove(mainRole)
+    target.roles.add(role)
 
     msg.reply(`<@${target.user.id}> has been muted!`)
     target.send(`You have been muted for ${ms(ms(time))}`)
 
     setTimeout(() => {
-        member.roles.add(mainRole.id)
-        member.roles.remove(role.id)
-        member.send(`You have been unmuted`)
+        target.roles.add(mainRole.id)
+        target.roles.remove(role.id)
+        target.send(`You have been unmuted`)
     }, ms(time));
 
 }
