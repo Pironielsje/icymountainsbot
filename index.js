@@ -106,7 +106,7 @@ client.on('interaction', (interaction) => {
                 .setURL(meme.url)
                 .setFooter(`Meme requested by: ${interaction.user.username}`, interaction.user.displayAvatarURL())
 
-            interaction.edit({ embeds: [embed] })
+            interaction.message.edit({ embeds: [embed] })
             interaction.reply({ content: `I gave u a new meme!`, ephemeral: true })
         })
     }
