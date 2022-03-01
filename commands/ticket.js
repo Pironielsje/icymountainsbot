@@ -4,20 +4,20 @@ module.exports.run = async(client, msg, args) => {
     const categoryId = "947895136812158956";
 
     // Get username
-    var userName = message.author.username;
+    var userName = msg.author.username;
     // Verkrijg discriminator
-    var userDiscriminator = message.author.discriminator;
+    var userDiscriminator = msg.author.discriminator;
 
     // If ticket has been made
     var bool = false;
 
     // Checking if ticket has been made.
-    message.guild.channels.forEach((channel) => {
+    msg.guild.channels.forEach((channel) => {
 
         // If ticket has been made sent:
         if (channel.name == userName.toLowerCase() + "-" + userDiscriminator) {
 
-            message.channel.send("You already made a ticket");
+            msg.channel.send("You already made a ticket");
 
             bool = true;
 
@@ -29,21 +29,21 @@ module.exports.run = async(client, msg, args) => {
     if (bool == true) return;
 
     var embedCreateTicket = new discord.RichEmbed()
-        .setTitle("Hey, " + message.author.username)
+        .setTitle("Hey, " + msg.author.username)
         .setFooter("Support channel will be made");
 
-    message.channel.send(embedCreateTicket);
+    msg.channel.send(embedCreateTicket);
 
     // Create channel and put it in the right catogary
-    message.guild.createChannel(userName + "-" + userDiscriminator, "text").then((createdChan) => { // Maak kanaal
+    msg.guild.createChannel(userName + "-" + userDiscriminator, "text").then((createdChan) => { // Maak kanaal
 
         createdChan.setParent(categoryId).then((settedParent) => { // Zet kanaal in category.
 
             // Put permissions for everyone
-            settedParent.overwritePermissions(message.guild.roles.find('name', "@everyone"), { "READ_MESSAGES": false });
-            settedParent.overwritePermissions(message.guild.roles.find('name', "@staff"), { "VIEW_CHANNEL": true });
+            settedParent.overwritePermissions(msg.guild.roles.find('name', "@everyone"), { "READ_MESSAGES": false });
+            settedParent.overwritePermissions(msg.guild.roles.find('name', "@staff"), { "VIEW_CHANNEL": true });
             // Put permission by the user that created the ticket
-            settedParent.overwritePermissions(message.author, {
+            settedParent.overwritePermissions(msg.author, {
 
                 "READ_MESSAGES": true,
                 "SEND_MESSAGES": true,
@@ -55,16 +55,16 @@ module.exports.run = async(client, msg, args) => {
             });
 
             var embedParent = new discord.RichEmbed()
-                .setTitle("Hey, " + message.author.username.toString())
+                .setTitle("Hey, " + msg.author.username.toString())
                 .setDescription("Ask your questions to the staff team here!");
 
             settedParent.send(embedParent);
         }).catch(err => {
-            message.channel.send("Something went wrong.");
+            msg.channel.send("Something went wrong.");
         });
 
     }).catch(err => {
-        message.channel.send("Something went wrong.");
+        msg.channel.send("Something went wrong.");
     });
 }
 
