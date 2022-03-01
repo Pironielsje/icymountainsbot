@@ -43,7 +43,7 @@ module.exports.run = async(client, msg, args) => {
                 )
 
             c.send({
-                content: `<@${msg.author.id}> <@942822344928415745>`,
+                content: `<@${msg.author.id}> <@${msg.guild.roles.cache.find(r => r.name === "staff").id}>`,
                 embeds: [newtic],
                 components: [row]
             }).then(m => {
