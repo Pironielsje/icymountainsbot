@@ -1,7 +1,7 @@
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js")
 
 module.exports.run = async(client, msg, args) => {
-    let author = msg.author.toLowerCase()
+    let author = msg.author.username.toLowerCase()
     let discriminator = msg.author.discriminator
 
     if (msg.guild.channels.cache.find(c => c.name == `${author}${discriminator}-ticket`)) {
