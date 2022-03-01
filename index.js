@@ -103,7 +103,7 @@ client.on('interaction', (interaction) => {
                 .setTitle(`${post.title}`)
                 .setDescription(`👍: ${post.ups} 💬: ${post.num_comments}`)
                 .setColor("NAVY")
-                .setURL(meme.url)
+                .setImage(meme.url)
                 .setFooter(`Meme requested by: ${interaction.user.username}`, interaction.user.displayAvatarURL())
 
             interaction.message.edit({ embeds: [embed] })

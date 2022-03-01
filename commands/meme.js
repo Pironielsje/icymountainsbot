@@ -15,7 +15,7 @@ module.exports.run = async(client, msg, args) => {
             .setTitle(`${post.title}`)
             .setDescription(`👍: ${post.ups} 💬: ${post.num_comments}`)
             .setColor("NAVY")
-            .setURL(post.url)
+            .setImage(post.url)
             .setFooter(`Meme requested by: ${msg.author.username}`, msg.author.displayAvatarURL())
 
         const row = new MessageActionRow()
