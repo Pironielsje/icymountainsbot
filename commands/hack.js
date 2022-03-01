@@ -49,10 +49,10 @@ module.exports.run = async(client, msg, args) => {
                                     setTimeout(() => {
                                         mess.edit(`Getting email address`).then(messa => {
                                             setTimeout(() => {
-                                                messa.edit(`Email: ${target.username}${email}`).then(messag => {
+                                                messa.edit(`Email: ${target.user.username}${email}`).then(messag => {
                                                     setTimeout(() => {
                                                         messag.edit(`Totally real and dangerous hack complete!`)
-                                                        msg.author.send(`Hack Information\n\nMost Common Word: ${commonWord}\nEmail: ${target.username}${email}\nIp address: ${ip}`)
+                                                        msg.author.send(`Hack Information\n\nMost Common Word: ${commonWord}\nEmail: ${target.user.username}${email}\nIp address: ${ip}`)
                                                     }, 3000);
                                                 })
                                             }, 4000);
