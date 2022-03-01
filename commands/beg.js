@@ -10,10 +10,10 @@ module.exports.run = async(client, msg, args) => {
     ]
 
     const giver = givers[Math.floor(Math.random() * givers.length)]
-    const money = Math.floor(Math.random() * 501)
+    const givenMoney = Math.floor(Math.random() * 501)
 
     if (schema.findOne({ _id: msg.author.id })) {
-        schema.findOneAndUpdate({ $inc: { money: money } }, { upsert: true })
+        schema.updateOne({ $inc: { money: givenMoney } })
         msg.reply(`${giver} gave you $${money}`)
     } else {
         let newData = new schema({
