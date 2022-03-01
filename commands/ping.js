@@ -4,7 +4,7 @@ module.exports.run = async(client, msg, args) => {
 
     const embed = new MessageEmbed()
         .setTitle('🏓 Pong')
-        .setDescription(`API Response time: ${Date.now() - msg.createdTimestamp}ms\nLatency: ${Math.floor(Math.round(client.ws.ping))}`)
+        .setDescription(`API Response time: ${Date.now() - msg.createdTimestamp}ms\nLatency: ${Math.floor(Math.round(client.ws.ping))}ms`)
         .setColor("RANDOM")
         .setFooter(`Requested by: ${msg.author.username}`, msg.author.displayAvatarURL())
 
