@@ -56,7 +56,7 @@ module.exports.run = async(client, msg, args) => {
 
             var embedParent = new discord.RichEmbed()
                 .setTitle("Hey, " + message.author.username.toString())
-                .setDescription("Put down here your question");
+                .setDescription("Ask your questions to the staff team here!");
 
             settedParent.send(embedParent);
         }).catch(err => {
