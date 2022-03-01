@@ -87,6 +87,27 @@ client.on('interaction', (interaction) => {
             }, 5000);
         })
     }
+    if (interaction.customId === "nmeme") {
+        const meme = require('reddit-fetch')
+
+        meme({
+            subreddit: "memes" || "dankmemes",
+            sort: "hot",
+            allowCrossPost: true,
+            allowModPost: false,
+            allowNSFW: false,
+            allowVideo: true
+        }).then(post => {
+            const embed = new MessageEmbed()
+                .setTitle(`${post.title}`)
+                .setDescription(`👍: ${post.ups} 💬: ${post.num_comments}`)
+                .setColor("NAVY")
+                .setFooter(`Meme requested by: ${interaction.user.username}`, interaction.user.displayAvatarURL())
+        })
+
+        interaction.edit({ embeds: [embed] })
+        interaction.reply({ content: `I gave u a new meme!`, ephemeral: true })
+    }
 })
 
 client.login(process.env.TOKEN);
