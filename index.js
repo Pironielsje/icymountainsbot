@@ -103,10 +103,10 @@ client.on('interaction', (interaction) => {
                 .setDescription(`👍: ${post.ups} 💬: ${post.num_comments}`)
                 .setColor("NAVY")
                 .setFooter(`Meme requested by: ${interaction.user.username}`, interaction.user.displayAvatarURL())
-        })
 
-        interaction.edit({ embeds: [embed] })
-        interaction.reply({ content: `I gave u a new meme!`, ephemeral: true })
+            interaction.edit({ embeds: [embed] })
+            interaction.reply({ content: `I gave u a new meme!`, ephemeral: true })
+        })
     }
 })
 
