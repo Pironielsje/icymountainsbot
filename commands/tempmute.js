@@ -8,7 +8,7 @@ module.exports.run = async(client, msg, args) => {
     if (!args[0]) return msg.reply(`Provide a member to mute please`)
 
     let mainRole = msg.guild.roles.cache.find(role => role.name === "Verified");
-    let role = msg.guild.roles.cahe.find(role => role.name === "muted")
+    let role = msg.guild.roles.cache.find(role => role.name === "muted")
 
     if (!role) return msg.reply(`You dont have a muted role! Please make one first`)
 
