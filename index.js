@@ -103,8 +103,8 @@ client.on('interaction', (interaction) => {
                 .setTitle(`${post.title}`)
                 .setDescription(`👍: ${post.ups} 💬: ${post.num_comments}`)
                 .setColor("NAVY")
-                .setImage(meme.url)
-                .setFooter(`Meme requested by: ${interaction.user.username}`, interaction.user.displayAvatarURL())
+                .setImage(post.url)
+                .setFooter(`Meme requested by: ${msg.author.username}`, msg.author.displayAvatarURL())
 
             interaction.message.edit({ embeds: [embed] })
             interaction.reply({ content: `I gave u a new meme!`, ephemeral: true })
